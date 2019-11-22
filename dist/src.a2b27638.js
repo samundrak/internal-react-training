@@ -31765,16 +31765,43 @@ var App =
 function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      counter: 0,
+      name: "samundra"
+    };
+    return _this;
   }
 
   _createClass(App, [{
+    key: "incCounter",
+    value: function incCounter() {
+      var _this2 = this;
+
+      this.setState(function () {
+        return {
+          counter: _this2.state.counter + 1
+        };
+      }, function () {
+        console.log(_this2.state.counter);
+        console.log("after update");
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, "hi");
+      var _this3 = this;
+
+      return _react.default.createElement("div", null, _react.default.createElement("button", {
+        onClick: function onClick() {
+          return _this3.incCounter();
+        }
+      }, "increment "), this.state.counter);
     }
   }]);
 
